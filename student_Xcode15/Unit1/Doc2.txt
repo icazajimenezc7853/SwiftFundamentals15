@@ -1,1 +1,14 @@
-
+What are three of the primary responsibilities of a UIView object?
+   Three of the primary responsibilities of a UIView object include:
+     Managing Content: A UIView is responsible for managing the content that it displays, which can include text, images, and other graphical elements.
+     Handling User Interaction: It processes touch events and user interactions, allowing developers to respond to gestures and taps.
+     Layout and Drawing: A UIView manages its own layout and drawing, determining how its content is presented on the screen.
+What does documentation call a view that's embedded in another view?
+    A view that is embedded in another view is referred to as a "subview."    
+What does documentation call the parent view that's embedding the other view?
+    The parent view that is embedding the other view is called the "superview."
+What is a view's frame?
+   A view's frame is a property that defines the view's position and size in its superview's coordinate system. It is represented as a rectangle that includes the origin (x, y) and the size (width, height) of the view.
+How is a view's bounds different from its frame?
+   The bounds of a view represent its internal coordinate system, which defines the view's size and its origin point relative to itself. The key difference is: The frame is relative to the superview's coordinate system,
+   while the bounds are relative to the view's own coordinate system. The bounds typically have an origin of (0, 0), but this can be adjusted to change the visible area of the view.
