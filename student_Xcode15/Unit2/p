@@ -1,0 +1,15 @@
+func pacing(currentDistance: Double, totalDistance: Double, currentTime: Double, goalTime: Double) {
+    // Calculate the pace per distance
+    let pacePerDistance = currentTime / currentDistance
+    let requiredTime = pacePerDistance * totalDistance
+    
+    if requiredTime <= goalTime {
+        print("Keep it up!")
+    } else {
+        print("You've got to push it just a bit harder!")
+    }
+}
+
+// Call the pacing function with example values
+pacing(currentDistance: 5.0, totalDistance: 10.0, currentTime: 30.0, goalTime: 60.0) // Keep it up!
+pacing(currentDistance: 5.0, totalDistance: 10.0, currentTime: 40.0, goalTime: 60.0) // You've got to push it just a bit harder!
