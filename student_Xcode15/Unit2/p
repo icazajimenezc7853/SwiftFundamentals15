@@ -13,8 +13,8 @@ func progressUpdate(steps: Int, goal: Int) {
 }
 
 // Call the progressUpdate function with different values
-progressUpdate(steps: 500, goal: 10000)  // You're off to a good start.
-progressUpdate(steps: 4000, goal: 10000) // You're almost halfway there!
-progressUpdate(steps: 6000, goal: 10000) // You're over halfway there!
-progressUpdate(steps: 9000, goal: 10000) // You're almost there!
-progressUpdate(steps: 10000, goal: 10000) // You beat your goal!
+progressUpdate(steps: 500, goal: 10000) 
+progressUpdate(steps: 4000, goal: 10000) 
+progressUpdate(steps: 6000, goal: 10000) 
+progressUpdate(steps: 9000, goal: 10000) 
+progressUpdate(steps: 10000, goal: 10000)

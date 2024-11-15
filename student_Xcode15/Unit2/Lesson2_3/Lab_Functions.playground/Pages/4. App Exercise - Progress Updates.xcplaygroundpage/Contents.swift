@@ -28,7 +28,7 @@ func pacing(currentDistance: Double, totalDistance: Double, currentTime: Double,
 
 // Call the pacing function with example values
 pacing(currentDistance: 5.0, totalDistance: 10.0, currentTime: 30.0, goalTime: 60.0)
-pacing(currentDistance: 5.0, totalDistance: 10.0, currentTime: 40.0, goalTime: 60.0) 
+pacing(currentDistance: 5.0, totalDistance: 10.0, currentTime: 40.0, goalTime: 60.0)
 /*:
 [Previous](@previous)  |  page 4 of 6  |  [Next: Exercise - Return Values](@next)
  */
