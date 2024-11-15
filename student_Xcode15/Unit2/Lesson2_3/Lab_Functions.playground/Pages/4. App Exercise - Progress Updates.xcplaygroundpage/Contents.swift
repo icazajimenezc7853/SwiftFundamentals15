@@ -14,8 +14,21 @@ func progressUpdate(steps: Int, goal: Int) {
 }
 
 //:  Your fitness tracking app is going to help runners stay on pace to reach their goals. Write a function called pacing that takes four `Double` parameters called `currentDistance`, `totalDistance`, `currentTime`, and `goalTime`. Your function should calculate whether or not the user is on pace to hit or beat `goalTime`. If yes, print "Keep it up!", otherwise print "You've got to push it just a bit harder!"
+func pacing(currentDistance: Double, totalDistance: Double, currentTime: Double, goalTime: Double) {
+    // Calculate the pace per distance
+    let pacePerDistance = currentTime / currentDistance
+    let requiredTime = pacePerDistance * totalDistance
+    
+    if requiredTime <= goalTime {
+        print("Keep it up!")
+    } else {
+        print("You've got to push it just a bit harder!")
+    }
+}
 
-
+// Call the pacing function with example values
+pacing(currentDistance: 5.0, totalDistance: 10.0, currentTime: 30.0, goalTime: 60.0)
+pacing(currentDistance: 5.0, totalDistance: 10.0, currentTime: 40.0, goalTime: 60.0) 
 /*:
 [Previous](@previous)  |  page 4 of 6  |  [Next: Exercise - Return Values](@next)
  */
