@@ -1,1 +1,61 @@
+/*:
+## Exercise - Computed Properties and Property Observers
+ 
+ The `Rectangle` struct below has two properties, one for width and one for height. Add a computed property that computes the area of the rectangle (i.e. width * height).
+ */
+struct Rectangle {
+    var width: Int
+    var height: Int
+    
+    // Computed property to calculate the area
+    var area: Int {
+        return width * height
+    }
+}
+
+// Create an instance of `Rectangle` and print the `area` property.
+let myRectangle = Rectangle(width: 10, height: 5)
+print("Area of Rectangle: \(myRectangle.area)") // Output: Area of Rectangle: 50
+
+/*:
+ In the `Height` struct below, height is represented in both inches and centimeters. 
+ Add a `didSet` to each property that will check if the other property is what it should be, and if not, sets the proper value.
+ */
+struct Height {
+    var heightInInches: Double {
+        didSet {
+            // Update heightInCentimeters when heightInInches changes
+            heightInCentimeters = heightInInches * 2.54
+        }
+    }
+    
+    var heightInCentimeters: Double {
+        didSet {
+            // Update heightInInches when heightInCentimeters changes
+            heightInInches = heightInCentimeters / 2.54
+        }
+    }
+    
+    // Initializer for height in inches
+    init(heightInInches: Double) {
+        self.heightInInches = heightInInches
+        self.heightInCentimeters = heightInInches * 2.54
+    }
+    
+    // Initializer for height in centimeters
+    init(heightInCentimeters: Double) {
+        self.heightInCentimeters = heightInCentimeters
+        self.heightInInches = heightInCentimeters / 2.54
+    }
+}
+
+// Create an instance of `Height` and then change one of its properties.
+var myHeight = Height(heightInInches: 65)
+
+// Print out the other property to ensure that it was adjusted accordingly.
+print("Height in Centimeters: \(myHeight.heightInCentimeters)") // Should print approximately 165.1
+
+// Change heightInInches and observe the change in heightInCentimeters
+myHeight.heightInInches = 70
+print("Updated Height in Centimeters: \(myHeight.heightInCentimeters)") // Should print approximately 177.8
 
