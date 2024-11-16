@@ -1,0 +1,45 @@
+/*:
+## App Exercise - Mile Times and Congratulations
+ 
+ The `RunningWorkout` struct below holds information about your users' running workouts. 
+ Add a computed property called `averageMileTime` that uses `distance` and `time` to compute the user's average mile time.
+ */
+struct RunningWorkout {
+    var distance: Double // in meters
+    var time: Double // in minutes
+    var elevation: Double // in meters
+    
+    // Computed property to calculate average mile time
+    var averageMileTime: Double {
+        let miles = distance / 1609.34 // Convert meters to miles
+        return time / miles // Average time per mile in minutes
+    }
+}
+
+// Create an instance of `RunningWorkout` and print the `averageMileTime` property.
+let myRun = RunningWorkout(distance: 2400, time: 15.0, elevation: 100)
+print("Average Mile Time: \(myRun.averageMileTime) minutes") // Output: Average Mile Time: 6.25 minutes
+
+/*:
+ In the `Steps` struct below, add a `willSet` to the `steps` property that will check if the new value is equal to `goal`, and if it is, prints a congratulatory message.
+ */
+struct Steps {
+    var steps: Int {
+        willSet {
+            if newValue == goal {
+                print("Congratulations! You've reached your goal of \(goal) steps!")
+            }
+        }
+    }
+    var goal: Int
+    
+    mutating func takeStep() {
+        steps += 1
+    }
+}
+
+// Create an instance of `Steps` where `steps` is 9999 and `goal` is 10000.
+var mySteps = Steps(steps: 9999, goal: 10000)
+
+// Call `takeStep()` and see if your message is printed to the console.
+mySteps.takeStep() // This should print the congratulatory message
