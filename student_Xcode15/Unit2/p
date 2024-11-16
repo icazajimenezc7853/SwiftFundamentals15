@@ -1,1 +1,41 @@
+/*:
+## Exercise - Type Properties and Methods
+ 
+ Imagine you have an app that requires the user to log in. You may have a `User` struct similar to that shown below. 
+ Create a `currentUser` type property on the `User` struct below and assign it to a `user` object representing you.
+ */
+struct User {
+    var userName: String
+    var email: String
+    var age: Int
+    
+    // Type property to hold the current user
+    static var currentUser: User?
+    
+    // Type method for logging in a user
+    static func logIn(user: User) {
+        currentUser = user
+        print("\(user.userName) has logged in.")
+    }
+}
+
+// Create an instance of User representing you
+let myUser = User(userName: "JohnDoe", email: "john.doe@example.com", age: 30)
+
+// Assign the current user
+User.currentUser = myUser
+
+// Print out the properties of currentUser
+if let currentUser = User.currentUser {
+    print("Current User - Username: \(currentUser.userName), Email: \(currentUser.email), Age: \(currentUser.age)")
+}
+
+// Below, call the `logIn(user:)` method and pass in a different User instance.
+let anotherUser = User(userName: "JaneSmith", email: "jane.smith@example.com", age: 28)
+User.logIn(user: anotherUser) // This should print that JaneSmith has logged in
+
+// Print out the properties of currentUser again to see the change
+if let currentUser = User.currentUser {
+    print("Current User - Username: \(currentUser.userName), Email: \(currentUser.email), Age: \(currentUser.age)")
+}
 
