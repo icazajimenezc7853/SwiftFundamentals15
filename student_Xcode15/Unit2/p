@@ -1,2 +1,50 @@
+/*:
+## App Exercise - Users and Distance
+ 
+ Create a `User` struct that has properties for basic information about a user.
+ */
+struct User {
+    var name: String
+    var age: Int
+    var height: Double // in centimeters
+    var weight: Double // in kilograms
+    var activityLevel: Int // scale from 1 to 10
+}
+
+// Create a variable instance of `User` and call it your name.
+let myUser = User(name: "John Doe", age: 30, height: 175.0, weight: 70.0, activityLevel: 7)
+
+// Print out a description of your `User` instance using the instance's properties.
+print("User Info - Name: \(myUser.name), Age: \(myUser.age), Height: \(myUser.height) cm, Weight: \(myUser.weight) kg, Activity Level: \(myUser.activityLevel)")
+
+/*:
+ Create a `Distance` struct that will represent distance in various units of measurement.
+ */
+struct Distance {
+    var meters: Double
+    var feet: Double
+    
+    // Custom initializer for meters
+    init(meters: Double) {
+        self.meters = meters
+        self.feet = meters * 3.28084
+    }
+    
+    // Custom initializer for feet
+    init(feet: Double) {
+        self.feet = feet
+        self.meters = feet / 3.28084
+    }
+}
+
+// Now create an instance of `Distance` called `mile`. Use the initializer for meters to set the distance to 1600.
+let mile = Distance(meters: 1600)
+
+// Print out the property for feet and verify that it is equal to 5249.344.
+print("Distance - Meters: \(mile.meters), Feet: \(mile.feet)") // Should print Feet: 5249.344
+
+// Now create another instance of `Distance` and give it some other distance.
+let anotherDistance = Distance(feet: 1000)
+print("Another Distance - Meters: \(anotherDistance.meters), Feet: \(anotherDistance.feet)") // Should print the corresponding meters
 
 
