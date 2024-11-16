@@ -1,0 +1,31 @@
+/*:
+## App Exercise - Type Properties and Methods
+
+ In another exercise, you added a computed property representing the average mile time from a run. 
+ However, you may want to have a calculator of sorts that users can use before their run to find out what mile time they need to average in order to run a given distance in a given time.
+ */
+struct RunningWorkout {
+    var distance: Double // in meters
+    var time: Double // in minutes
+    var elevation: Double // in meters
+    
+    // Type properties for unit conversions
+    static let metersInFeet: Double = 3.28084
+    static let milesInMeters: Double = 1600.0
+    
+    // Type method to calculate average mile time needed
+    static func mileTimeFor(distance: Double, time: Double) -> Double {
+        let miles = distance / milesInMeters // Convert distance to miles
+        return time / miles // Calculate average mile time in minutes
+    }
+}
+
+// Call the method from outside of the struct and print the result to ensure that it works properly.
+let distanceInMeters: Double = 3200 // Example distance
+let timeInMinutes: Double = 20 // Example time
+let averageMileTime = RunningWorkout.mileTimeFor(distance: distanceInMeters, time: timeInMinutes)
+print("Average Mile Time: \(averageMileTime) minutes") // Output: Average Mile Time: 10.0 minutes
+
+// Print the type properties for unit conversions
+print("Meters in a foot: \(RunningWorkout.metersInFeet)")
+print("Miles in meters: \(RunningWorkout.milesInMeters)")
