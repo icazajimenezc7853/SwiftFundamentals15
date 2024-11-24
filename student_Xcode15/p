@@ -1,1 +1,22 @@
+// Step 1: Create a dictionary for paces
+var paces: [String: Double] = ["Easy": 10.0, "Medium": 8.0, "Fast": 6.0]
+print(paces) // Print the dictionary
+
+// Step 2: Add a new key/value pair for Sprint
+paces["Sprint"] = 4.0
+print(paces) // Print the updated dictionary
+
+// Step 3: Update values for Medium and Fast paces
+paces["Medium"] = 7.5
+paces["Fast"] = 5.8
+print(paces) // Print the updated dictionary
+
+// Step 4: Remove the Sprint pace
+paces.removeValue(forKey: "Sprint")
+print(paces) // Print the updated dictionary
+
+// Step 5: Print a statement for a chosen pace
+if let mediumPace = paces["Medium"] {
+    print("Okay! I'll keep you at a \(mediumPace) minute mile pace.")
+}
 
