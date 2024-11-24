@@ -1,3 +1,26 @@
+// Step 1: Create challenge lists
+let walkingChallenges: [String] = ["Walk 3 miles a day", "Walk for 30 minutes daily"]
+let runningChallenges: [String] = ["Run 5 times a week", "Run a 5K every month"]
 
+// Step 2: Create a nested array for challenges
+let challenges: [[String]] = [walkingChallenges, runningChallenges]
 
+// Step 3: Print the first element in the second challenge list
+print(challenges[1][0]) // Output: "Run 5 times a week"
 
+// Step 4: Remove all challenges
+var mutableChallenges = challenges // Create a mutable copy
+mutableChallenges.removeAll()
+print(mutableChallenges) // Output: []
+
+// Step 5: Create a new array for committed challenges
+var committedChallenges: [String] = [] // Empty array
+
+// Step 6: Check if the committed challenges array is empty
+if committedChallenges.isEmpty {
+    print("Please commit to a challenge.")
+} else if committedChallenges.count == 1 {
+    print("The challenge you have chosen is \(committedChallenges[0]).")
+} else {
+    print("You have chosen multiple challenges.")
+}
