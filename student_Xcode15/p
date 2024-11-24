@@ -1,18 +1,1 @@
-let cadence: Double = 180
-var testSteps = 0
 
-// While loop to print "Take a step" 10 times
-while testSteps < 10 {
-    print("Take a step")
-    testSteps += 1
-    Thread.sleep(forTimeInterval: 60 / cadence) // Pause based on cadence
-}
-
-testSteps = 0 // Resetting testSteps for the repeat-while loop
-
-// Repeat-while loop to print "Take a step" 10 times
-repeat {
-    print("Take a step")
-    testSteps += 1
-    Thread.sleep(forTimeInterval: 60 / cadence) // Pause based on cadence
-} while testSteps < 10
