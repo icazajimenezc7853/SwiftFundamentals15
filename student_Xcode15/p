@@ -1,25 +1,3 @@
-// Step 1: Loop through values 1 to 100
-for number in 1...100 {
-    print(number)
-}
 
-// Step 2: Loop through characters in the alphabet string
-let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-for (index, character) in alphabet.enumerated() {
-    print("Index \(index): \(character)")
-}
-
-// Step 3: Create a dictionary of states and capitals
-let statesAndCapitals: [String: String] = [
-    "California": "Sacramento",
-    "Texas": "Austin",
-    "New York": "Albany"
-]
-
-// Iterate over the dictionary and print the state and its capital
-for (state, capital) in statesAndCapitals {
-    print("\(state)'s capital is \(capital).")
-}
 
 
