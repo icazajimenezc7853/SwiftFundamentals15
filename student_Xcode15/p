@@ -1,2 +1,64 @@
+class Spaceship {
+    var name: String = ""
+    var health = 100
+    var position = 0
+    
+    func moveLeft() {
+        position -= 1
+    }
+    
+    func moveRight() {
+        position += 1
+    }
+    
+    func wasHit() {
+        health -= 5
+        if health <= 0 {
+            print("Sorry, your ship was hit one too many times. Do you want to play again?")
+        }
+    }
+}
+
+class Fighter: Spaceship {
+    var weapon = ""
+    var remainingFirePower = 5
+    
+    func fire() {
+        if remainingFirePower > 0 {
+            remainingFirePower -= 1
+        } else {
+            print("You have no more fire power.")
+        }
+    }
+}
+
+class ShieldedShip: Fighter {
+    var shieldStrength: Int = 25
+    
+    override func wasHit() {
+        if shieldStrength > 0 {
+            shieldStrength -= 5
+        } else {
+            super.wasHit() // Call the superclass implementation
+        }
+    }
+}
+
+let defender = ShieldedShip()
+defender.name = "Defender"
+defender.weapon = "Cannon"
+
+// Move right and print position
+defender.moveRight()
+print("Defender's position after moving right: \(defender.position)")
+
+// Fire and print remaining fire power
+defender.fire()
+print("Defender's remaining fire power after firing: \(defender.remainingFirePower)")
+
+// Call wasHit and print shieldStrength and health
+defender.wasHit()
+print("Defender's shield strength after being hit: \(defender.shieldStrength)")
+print("Defender's health after being hit: \(defender.health)")
 
 
