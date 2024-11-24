@@ -38,17 +38,17 @@ falcon.name = "Falcon"
 //:  Go back and add a method called `moveLeft()` to the definition of `Spaceship`. This method should adjust the position of the spaceship to the left by one. Add a similar method called `moveRight()` that moves the spaceship to the right. Once these methods exist, use them to move `falcon` to the left twice and to the right once. Print the new position of `falcon` after each change in position.
 // Move falcon
 falcon.moveLeft()
-print("Falcon's position after moving left: \(falcon.position)") // -1
+print("Falcon's position after moving left: \(falcon.position)")
 
 falcon.moveLeft()
-print("Falcon's position after moving left: \(falcon.position)") // -2
+print("Falcon's position after moving left: \(falcon.position)")
 
 falcon.moveRight()
-print("Falcon's position after moving right: \(falcon.position)") // -1
+print("Falcon's position after moving right: \(falcon.position)")
 //:  The last thing `Spaceship` needs for this example is a method to handle what happens if the ship gets hit. Go back and add a method `wasHit()` to `Spaceship` that will decrement the ship's health by 5, then if `health` is less than or equal to 0 will print "Sorry, your ship was hit one too many times. Do you want to play again?" Once this method exists, call it on `falcon` and print out the value of `health`.
 // Handle being hit
 falcon.wasHit()
-print("Falcon's health: \(falcon.health)") // -5
+print("Falcon's health: \(falcon.health)")
 
 /*:
 page 1 of 4  |  [Next: Exercise - Create a Subclass](@next)
