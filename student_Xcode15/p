@@ -1,0 +1,43 @@
+class Spaceship {
+    var name: String
+    var health: Int
+    var position: Int
+
+    init(name: String = "", health: Int = 0, position: Int = 0) {
+        self.name = name
+        self.health = health
+        self.position = position
+    }
+
+    func moveLeft() {
+        position -= 1
+    }
+
+    func moveRight() {
+        position += 1
+    }
+
+    func wasHit() {
+        health -= 5
+        if health <= 0 {
+            print("Sorry, your ship was hit one too many times. Do you want to play again?")
+        }
+    }
+}
+
+let falcon = Spaceship()
+falcon.name = "Falcon"
+
+// Move falcon
+falcon.moveLeft()
+print("Falcon's position after moving left: \(falcon.position)") // -1
+
+falcon.moveLeft()
+print("Falcon's position after moving left: \(falcon.position)") // -2
+
+falcon.moveRight()
+print("Falcon's position after moving right: \(falcon.position)") // -1
+
+// Handle being hit
+falcon.wasHit()
+print("Falcon's health: \(falcon.health)") // -5
