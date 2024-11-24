@@ -1,2 +1,25 @@
+// Step 1: Create an empty registration list
+var registrationList: [String] = []
+
+// Step 2: Add Jasmine to the registration list
+registrationList.append("Jasmine")
+print(registrationList) // Output: ["Jasmine"]
+
+// Step 3: Add additional names
+registrationList += ["Alice", "Bob", "Charlie", "Diana"]
+print(registrationList) // Output: ["Jasmine", "Alice", "Bob", "Charlie", "Diana"]
+
+// Step 4: Insert Trey as the second element
+registrationList.insert("Trey", at: 1)
+print(registrationList) // Output: ["Jasmine", "Trey", "Alice", "Bob", "Charlie", "Diana"]
+
+// Step 5: Change the sixth element to Elton
+registrationList[5] = "Elton"
+print(registrationList) // Output: ["Jasmine", "Trey", "Alice", "Bob", "Charlie", "Elton"]
+
+// Step 6: Remove the last element
+let deletedItem = registrationList.removeLast()
+print(deletedItem) // Output: "Elton"
+print(registrationList) // Output: ["Jasmine", "Trey", "Alice", "Bob", "Charlie"]
 
 
