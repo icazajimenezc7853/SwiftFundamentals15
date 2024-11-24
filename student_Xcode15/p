@@ -1,3 +1,83 @@
+class Spaceship {
+    let name: String
+    var health: Int
+    var position: Int
 
+    init(name: String, health: Int = 100, position: Int = 0) {
+        self.name = name
+        self.health = health
+        self.position = position
+    }
 
+    func moveLeft() {
+        position -= 1
+    }
+
+    func moveRight() {
+        position += 1
+    }
+
+    func wasHit() {
+        health -= 5
+        if health <= 0 {
+            print("Sorry, your ship was hit one too many times. Do you want to play again?")
+        }
+    }
+}
+
+class Fighter: Spaceship {
+    let weapon: String
+    var remainingFirePower: Int
+
+    init(name: String, weapon: String, remainingFirePower: Int, health: Int = 100, position: Int = 0) {
+        self.weapon = weapon
+        self.remainingFirePower = remainingFirePower
+        super.init(name: name, health: health, position: position)
+    }
+
+    func fire() {
+        if remainingFirePower > 0 {
+            remainingFirePower -= 1
+        } else {
+            print("You have no more fire power.")
+        }
+    }
+}
+
+class ShieldedShip: Fighter {
+    var shieldStrength: Int
+
+    init(name: String, weapon: String, remainingFirePower: Int, shieldStrength: Int, health: Int = 100, position: Int = 0) {
+        self.shieldStrength = shieldStrength
+        super.init(name: name, weapon: weapon, remainingFirePower: remainingFirePower, health: health, position: position)
+    }
+
+    override func wasHit() {
+        if shieldStrength > 0 {
+            shieldStrength -= 5
+        } else {
+            super.wasHit()
+        }
+    }
+}
+
+// Create instances
+let falcon = Spaceship(name: "Falcon")
+let destroyer = Fighter(name: "Destroyer", weapon: "Laser", remainingFirePower: 10)
+let defender = ShieldedShip(name: "Defender", weapon: "Cannon", remainingFirePower: 10, shieldStrength: 25)
+
+// Create a new constant named sameShip
+let sameShip = falcon
+
+// Print out the position of sameShip and falcon
+print("Position of sameShip: \(sameShip.position), Position of falcon: \(falcon.position)")
+
+// Call moveLeft() on sameShip
+sameShip.moveLeft()
+
+// Print out the position of sameShip and falcon again
+print("Position of sameShip after moving left: \(sameShip.position), Position of falcon after moving left: \(falcon.position)")
+
+// Explanation of behavior
+print("Both positions changed because 'sameShip' and 'falcon' reference the same instance of the Spaceship class. If both were structs instead of classes, they would have different instances, and changing one would not affect the other.")
 
