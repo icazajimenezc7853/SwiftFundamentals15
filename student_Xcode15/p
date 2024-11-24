@@ -1,1 +1,59 @@
+class Spaceship {
+    var name: String = ""
+    var health = 100
+    var position = 0
+    
+    func moveLeft() {
+        position -= 1
+    }
+    
+    func moveRight() {
+        position += 1
+    }
+    
+    func wasHit() {
+        health -= 5
+        if health <= 0 {
+            print("Sorry, your ship was hit one too many times. Do you want to play again?")
+        }
+    }
+}
+
+class Fighter: Spaceship {
+    var weapon: String = ""
+    var remainingFirePower: Int = 5
+    
+    func fire() {
+        if remainingFirePower > 0 {
+            remainingFirePower -= 1
+            print("Firing! Remaining fire power: \(remainingFirePower)")
+        } else {
+            print("You have no more fire power.")
+        }
+    }
+}
+
+let destroyer = Fighter()
+destroyer.weapon = "Laser"
+destroyer.remainingFirePower = 10
+destroyer.name = "Destroyer"
+
+// Print initial position
+print("Initial position of \(destroyer.name): \(destroyer.position)")
+
+// Move right and print position
+destroyer.moveRight()
+print("Position after moving right: \(destroyer.position)")
+
+// Trying to print weapon on falcon will not work because falcon is an instance of Spaceship,
+// which does not have a weapon property defined.
+// print(falcon.weapon) // This line would cause a compilation error.
+
+// Call fire a few times
+destroyer.fire() // Should print remaining fire power
+destroyer.fire() // Should print remaining fire power
+destroyer.fire() // Should print remaining fire power
+destroyer.fire() // Should print remaining fire power
+destroyer.fire() // Should print remaining fire power
+destroyer.fire() // Should print "You have no more fire power."
 
