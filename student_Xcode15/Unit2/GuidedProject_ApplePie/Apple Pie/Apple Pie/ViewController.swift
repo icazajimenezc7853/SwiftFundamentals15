@@ -21,6 +21,8 @@ class ViewController: UIViewController {
         }
     }
     var currentGame: Game!
+    var pastGameWord: String = "" // hold the current game word
+    //var pastGameWord: Game!
 
     @IBOutlet var treeImageView: UIImageView!
     @IBOutlet var correctWordLabel: UILabel!
@@ -46,19 +48,28 @@ class ViewController: UIViewController {
     func updateGameState() {
         if currentGame.incorrectMovesRemaining == 0 {
             totalLosses += 1
+            showRoundOver() // call the method to show the correct word
         } else if currentGame.word == currentGame.formattedWord {
             totalWins += 1
+            showRoundOver() // call the method to show the correct word
         } else {
             updateUI()
         }
     }
     
+    func showRoundOver() {
+        messageLabel.text = "Round Over! The correct word was: \(pastGameWord)"
+        enableLetterButtons(false) // disable letter buttons to prevent further guesses
+    }
+    
     func newRound() {
         if !listOfWords.isEmpty {
+            pastGameWord = currentGame?.word ?? ""// save the current word
             let newWord = listOfWords.removeFirst()
             currentGame = Game(word: newWord, incorrectMovesRemaining: incorrectMovesAllowed, guessedLetters: [])
             enableLetterButtons(true)
             updateUI()
+            messageLabel.text = "" //clear the message for new round
         } else {
             enableLetterButtons(false)
         }
