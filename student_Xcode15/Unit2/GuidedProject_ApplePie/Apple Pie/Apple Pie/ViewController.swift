@@ -30,9 +30,11 @@ class ViewController: UIViewController {
     func updateGameState() {
         if currentGame.incorrectMovesRemaining == 0 {
             totalLosses += 1
+            updateUI()
             showRoundOver() // Show the round over message
         } else if currentGame.word == currentGame.formattedWord {
             totalWins += 1
+            updateUI()
             showRoundOver() // Show the round over message
         } else {
             updateUI()
