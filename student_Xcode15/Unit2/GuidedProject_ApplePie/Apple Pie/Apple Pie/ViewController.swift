@@ -60,13 +60,23 @@ class ViewController: UIViewController {
         }
     }
     
-    func showFinalResults() {
-        let alert = UIAlertController(title: "Game Over", message: "Total Wins: \(totalWins), Total Losses: \(totalLosses)", preferredStyle: .alert)
+    func showRoundOver() {
+        let alert = UIAlertController(title: "Round Over", message: nil, preferredStyle: .alert)
+    
+        let message = "The correct word was: \(currentGame.word)"
+        let messageAttrString = NSAttributedString(string: message, attributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24) // Adjust size as needed
+        ])
+    
+        alert.setValue(messageAttrString, forKey: "attributedMessage")
+    
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            self.resetGame() // Reset the game if desired
+            self.newRound() // Start the next round when the alert is dismissed
         }))
+    
         present(alert, animated: true, completion: nil)
     }
+
     
     func resetGame() {
         totalWins = 0
