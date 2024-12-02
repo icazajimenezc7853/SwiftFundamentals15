@@ -40,12 +40,23 @@ class ViewController: UIViewController {
     }
     
     func showRoundOver() {
-        let alert = UIAlertController(title: "Round Over", message: "The correct word was: \(currentGame.word)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            self.newRound() // Start the next round when the alert is dismissed
-        }))
-        present(alert, animated: true, completion: nil)
-    }
+    let alert = UIAlertController(title: "Round Over", message: nil, preferredStyle: .alert)
+    
+    // Create an attributed string with a larger font size
+    let message = "The correct word was: \(currentGame.word)"
+    let attributedMessage = NSAttributedString(string: message, attributes: [
+        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24) // Change the size as needed
+    ])
+    
+    // Set the attributed message to the alert
+    alert.setValue(attributedMessage, forKey: "attributedMessage")
+    
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+        self.newRound() // Start the next round when the alert is dismissed
+    }))
+    
+    present(alert, animated: true, completion: nil)
+}
     
     func newRound() {
         if !listOfWords.isEmpty {
@@ -60,23 +71,13 @@ class ViewController: UIViewController {
         }
     }
     
-    func showRoundOver() {
-        let alert = UIAlertController(title: "Round Over", message: nil, preferredStyle: .alert)
-    
-        let message = "The correct word was: \(currentGame.word)"
-        let messageAttrString = NSAttributedString(string: message, attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24) // Adjust size as needed
-        ])
-    
-        alert.setValue(messageAttrString, forKey: "attributedMessage")
-    
+    func showFinalResults() {
+        let alert = UIAlertController(title: "Game Over", message: "Total Wins: \(totalWins), Total Losses: \(totalLosses)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            self.newRound() // Start the next round when the alert is dismissed
+            self.resetGame() // Reset the game if desired
         }))
-    
         present(alert, animated: true, completion: nil)
     }
-
     
     func resetGame() {
         totalWins = 0
