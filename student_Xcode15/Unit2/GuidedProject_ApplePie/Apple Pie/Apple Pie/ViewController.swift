@@ -22,13 +22,12 @@ class ViewController: UIViewController {
     }
     var currentGame: Game!
     var pastGameWord: String = "" // hold the current game word
-    //var pastGameWord: Game!
+    var currentWordIndex: Int = 0 // Track the current word index
 
     @IBOutlet var treeImageView: UIImageView!
     @IBOutlet var correctWordLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
-    @IBOutlet var messageLabel: UILabel!
-    
+        
     @IBOutlet var letterButtons: [UIButton]!
     
     override func viewDidLoad() {
@@ -58,18 +57,20 @@ class ViewController: UIViewController {
     }
     
     func showRoundOver() {
-        messageLabel.text = "Round Over! The correct word was: \(pastGameWord)"
-        enableLetterButtons(false) // disable letter buttons to prevent further guesses
+        let alert = UIAlertController(title: "Round Over", message: "The correct word was: \(currentGame.word)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in self.currentWordIndex += 1 //move to next word
+            self.newRound() //start next round
+        }))
+        present(alert, animated: true, completion: nil)
     }
     
     func newRound() {
-        if !listOfWords.isEmpty {
+        if currentWordIndex < listOfWords.count {
             pastGameWord = currentGame?.word ?? ""// save the current word
-            let newWord = listOfWords.removeFirst()
+            let newWord = listOfWords[currentWordIndex]
             currentGame = Game(word: newWord, incorrectMovesRemaining: incorrectMovesAllowed, guessedLetters: [])
             enableLetterButtons(true)
-            updateUI()
-            messageLabel.text = "" //clear the message for new round
+            updateUI()        
         } else {
             enableLetterButtons(false)
         }

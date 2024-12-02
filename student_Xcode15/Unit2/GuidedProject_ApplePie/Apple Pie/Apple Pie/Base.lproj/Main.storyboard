@@ -20,10 +20,10 @@
                                 <rect key="frame" x="0.0" y="20" width="1366" height="1004"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tree 0" translatesAutoresizingMaskIntoConstraints="NO" id="4VR-t8-qwe" userLabel="Tree Image View">
-                                        <rect key="frame" x="0.0" y="0.0" width="1366" height="679"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1366" height="734"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zPt-Z7-LY3">
-                                        <rect key="frame" x="0.0" y="679" width="1366" height="325"/>
+                                        <rect key="frame" x="0.0" y="734" width="1366" height="270"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVX-GY-uQ6">
                                                 <rect key="frame" x="433" y="0.0" width="500" height="50"/>
@@ -407,14 +407,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct Word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNy-2E-noL">
-                                                <rect key="frame" x="611.5" y="220" width="143.5" height="50"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OS-H1-7gp">
-                                                <rect key="frame" x="631.5" y="275" width="103.5" height="50"/>
+                                                <rect key="frame" x="631.5" y="220" width="103.5" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -435,7 +429,6 @@
                     </view>
                     <connections>
                         <outlet property="correctWordLabel" destination="SNt-Iq-uLt" id="iZd-BZ-FUt"/>
-                        <outlet property="messageLabel" destination="dNy-2E-noL" id="ghL-xf-Jgd"/>
                         <outlet property="scoreLabel" destination="1OS-H1-7gp" id="kls-Bk-742"/>
                         <outlet property="treeImageView" destination="4VR-t8-qwe" id="bnj-yL-qxu"/>
                         <outletCollection property="letterButtons" destination="8CN-y2-Rgm" collectionClass="NSMutableArray" id="S3I-qq-MZ5"/>
