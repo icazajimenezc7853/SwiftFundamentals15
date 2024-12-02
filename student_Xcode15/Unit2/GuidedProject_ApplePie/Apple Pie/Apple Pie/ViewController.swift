@@ -1,3 +1,12 @@
+//
+//
+//  Apple Pie
+//
+//  Created by remotestudent on 12/1/24.
+//
+
+import UIKit
+
 class ViewController: UIViewController {
     var listOfWords = ["buccaneer", "swift", "glorious", "incandescent", "bug", "program"]
     let incorrectMovesAllowed = 7
@@ -79,27 +88,14 @@ class ViewController: UIViewController {
         }
     }
     
-    func showFinalResults() {
-        // Check if both scores are zero
-        if totalWins == 0 && totalLosses == 0 {
-            resetGame() // Reset the game immediately
-            return // Exit the function to prevent showing the alert
-        }
-    
+    func showFinalResults() {        
         let alert = UIAlertController(title: "Game Over", message: "Total Wins: \(totalWins), Total Losses: \(totalLosses)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            self.resetGame() // Reset the game if desired
+            exit(0)
         }))
         present(alert, animated: true, completion: nil)
     }
-    
-    func resetGame() {
-        totalWins = 0
-        totalLosses = 0
-        listOfWords.shuffle() // Shuffle words for a new game
-        newRound() // Start a new game
-    }
-    
+       
     func enableLetterButtons(_ enable: Bool) {
         for button in letterButtons {
             button.isEnabled = enable
