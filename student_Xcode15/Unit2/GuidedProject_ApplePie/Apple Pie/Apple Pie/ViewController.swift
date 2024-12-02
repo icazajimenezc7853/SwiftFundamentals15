@@ -40,23 +40,30 @@ class ViewController: UIViewController {
     }
     
     func showRoundOver() {
-    let alert = UIAlertController(title: "Round Over", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Round Over", message: nil, preferredStyle: .alert)
     
-    // Create an attributed string with a larger font size
-    let message = "The correct word was: \(currentGame.word)"
-    let attributedMessage = NSAttributedString(string: message, attributes: [
-        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18) // Change the size as needed
-    ])
+        // Create the message with the word bolded
+        let message = "The correct word was: "
+        let boldWord = currentGame.word
+        let attributedMessage = NSMutableAttributedString(string: message, attributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18) // Regular font size
+        ])
     
-    // Set the attributed message to the alert
-    alert.setValue(attributedMessage, forKey: "attributedMessage")
+        // Append the bold word
+        let boldAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: 18) // Bold font size
+        ]
+        attributedMessage.append(NSAttributedString(string: boldWord, attributes: boldAttributes))
     
-    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-        self.newRound() // Start the next round when the alert is dismissed
-    }))
+        // Set the attributed message to the alert
+        alert.setValue(attributedMessage, forKey: "attributedMessage")
     
-    present(alert, animated: true, completion: nil)
-}
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            self.newRound() // Start the next round when the alert is dismissed
+        }))
+    
+        present(alert, animated: true, completion: nil)
+    }
     
     func newRound() {
         if !listOfWords.isEmpty {
