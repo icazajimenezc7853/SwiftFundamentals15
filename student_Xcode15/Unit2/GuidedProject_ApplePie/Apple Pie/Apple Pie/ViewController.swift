@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     // Create an attributed string with a larger font size
     let message = "The correct word was: \(currentGame.word)"
     let attributedMessage = NSAttributedString(string: message, attributes: [
-        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24) // Change the size as needed
+        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18) // Change the size as needed
     ])
     
     // Set the attributed message to the alert
