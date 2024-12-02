@@ -7,6 +7,7 @@ class ViewController: UIViewController {
     var totalLosses = 0
     var currentGame: Game!
     var pastGameWord: String = "" // hold the current game word
+    var isGameActive = true // Flag to track if the game is active
 
     @IBOutlet var treeImageView: UIImageView!
     @IBOutlet var correctWordLabel: UILabel!
@@ -28,14 +29,18 @@ class ViewController: UIViewController {
     }
     
     func updateGameState() {
+        if !isGameActive { return } // Exit if the game is not active
+
         if currentGame.incorrectMovesRemaining == 0 {
             totalLosses += 1
-            updateUI()
-            showRoundOver() // Show the round over message
+            isGameActive = false // Set the game to inactive
+            updateUI() // Update the UI first
+            showRoundOver() // Then show the round over message
         } else if currentGame.word == currentGame.formattedWord {
             totalWins += 1
-            updateUI()
-            showRoundOver() // Show the round over message
+            isGameActive = false // Set the game to inactive
+            updateUI() // Update the UI first
+            showRoundOver() // Then show the round over message
         } else {
             updateUI()
         }
@@ -69,6 +74,7 @@ class ViewController: UIViewController {
     
     func newRound() {
         if !listOfWords.isEmpty {
+            isGameActive = true // Set the game to active
             pastGameWord = currentGame?.word ?? "" // Save the current word
             let newWord = listOfWords.removeFirst()
             currentGame = Game(word: newWord, incorrectMovesRemaining: incorrectMovesAllowed, guessedLetters: [])
