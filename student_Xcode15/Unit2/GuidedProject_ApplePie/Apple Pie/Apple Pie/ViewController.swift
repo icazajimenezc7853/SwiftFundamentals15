@@ -1,5 +1,3 @@
-import UIKit
-
 class ViewController: UIViewController {
     var listOfWords = ["buccaneer", "swift", "glorious", "incandescent", "bug", "program"]
     let incorrectMovesAllowed = 7
@@ -7,7 +5,6 @@ class ViewController: UIViewController {
     var totalLosses = 0
     var currentGame: Game!
     var pastGameWord: String = "" // hold the current game word
-    var isGameActive = true // Flag to track if the game is active
 
     @IBOutlet var treeImageView: UIImageView!
     @IBOutlet var correctWordLabel: UILabel!
@@ -29,22 +26,19 @@ class ViewController: UIViewController {
     }
     
     func updateGameState() {
-        if !isGameActive { return } // Exit if the game is not active
-
         if currentGame.incorrectMovesRemaining == 0 {
             totalLosses += 1
-            isGameActive = false // Set the game to inactive
             updateUI() // Update the UI first
             showRoundOver() // Then show the round over message
         } else if currentGame.word == currentGame.formattedWord {
             totalWins += 1
-            isGameActive = false // Set the game to inactive
             updateUI() // Update the UI first
             showRoundOver() // Then show the round over message
         } else {
             updateUI()
         }
     }
+
     
     func showRoundOver() {
         let alert = UIAlertController(title: "Round Over", message: nil, preferredStyle: .alert)
@@ -74,7 +68,6 @@ class ViewController: UIViewController {
     
     func newRound() {
         if !listOfWords.isEmpty {
-            isGameActive = true // Set the game to active
             pastGameWord = currentGame?.word ?? "" // Save the current word
             let newWord = listOfWords.removeFirst()
             currentGame = Game(word: newWord, incorrectMovesRemaining: incorrectMovesAllowed, guessedLetters: [])
@@ -87,6 +80,12 @@ class ViewController: UIViewController {
     }
     
     func showFinalResults() {
+        // Check if both scores are zero
+        if totalWins == 0 && totalLosses == 0 {
+            resetGame() // Reset the game immediately
+            return // Exit the function to prevent showing the alert
+        }
+    
         let alert = UIAlertController(title: "Game Over", message: "Total Wins: \(totalWins), Total Losses: \(totalLosses)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
             self.resetGame() // Reset the game if desired
